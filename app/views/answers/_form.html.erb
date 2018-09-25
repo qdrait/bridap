@@ -1,0 +1,62 @@
+<%= form_for(@answer, url: path, method: method) do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id, class: 'form-control unit-price' %>
+  <%= f.hidden_field :office_id, :value => current_user.office.id, class: 'form-control unit-price' %>
+  <%
+    #ここはゆくゆくマスタ化けるする。一旦固定。
+    #1:テキスト入力、2:ラジオボタン。本当はチェックボックスもやりたい。10月までには。
+    questions = [
+                  ['新郎お名前',1],
+                  ['新郎お名前2',1],
+                  ['新郎生年月日',1],
+                  ['新郎出身地',1],
+                  ['新婦お名前',1],
+                  ['新婦生年月日',1],
+                  ['新郎出身地',1],
+                  ['新姓',2,['新郎名字','新婦名字','その他']],
+                  ['ご希望時期',2,['春','夏','秋','冬']],
+                  ['ご予算',2,['〜200万円','〜300万円','〜350万円','〜400万円','401万円〜']],
+                  ['結婚式のイメージ',2,['はなやか','かわいらしい','かっこいい','アットホーム','その他',]],
+                ]
+  %>
+
+  <% if path == answers_path %>
+    <div class="container">
+      <% questions.each_with_index do |question,index| %>
+        <%= f.fields_for :answer_details do |od| %>
+        <div class="row question-row">
+          <div class="col-sm-3 question">
+            <%= question[0] %>
+          </div>
+          <div class="col-sm-8">
+            <%= render 'anser_detail_fields', f: od, i: index, style: question[1], choices: question[2] %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="registrate">
+      <%= f.submit '登録する', class: 'square_btn' %></br>
+      <a href="/" class="square_btn">回答をやめる</a>
+    </div>
+
+  <% elsif path == answer_path%>
+    <div class="container">
+        <%= f.fields_for :answer_details do |od| %>
+        <div class="row question-row">
+          <div class="col-sm-3 question">
+            <%= questions[od.object.question_no][0] %>
+          </div>
+          <div class="col-sm-8">
+            <%= render 'anser_detail_fields', f: od, i: od.object.question_no, style: questions[od.object.question_no][1], choices: questions[od.object.question_no][2] %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+    <div class="registrate">
+      <%= f.submit '編集する', class: 'square_btn' %></br>
+      <a href="/answers/index" class="square_btn">回答をやめる</a></br>
+      <a href="/answers/index" class="square_btn">削除する(作成中)</a>
+    </div>
+  <% end %>
+
+<% end %>

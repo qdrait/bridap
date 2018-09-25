@@ -1,0 +1,18 @@
+<tr>
+  <%= f.hidden_field :id %>
+  <%= f.hidden_field :question_no, :value => i %>
+
+  <% if style == 1 %>
+    <%= f.text_field :content, class: 'answer' %>
+  <% elsif style == 2 %>
+    <% choices.each do |choice| %>
+    <div class="sample">
+
+      <%= f.radio_button :content, choice %>
+      <%= f.label :content, choice, value: choice %>
+
+    </div>
+    <% end %>
+  <% end %>
+
+</tr>

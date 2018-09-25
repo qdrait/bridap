@@ -1,0 +1,122 @@
+// Place all the styles related to the answers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-container{
+  background: linear-gradient( 180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 1)),
+              url(/top.jpg);
+  // background-image: url("/top.jpg");
+  background-size:  100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  height: 500px;
+}
+
+.top-message{
+  display:  inline-block;                         /* インラインブロックにする */
+  margin: 400px auto 0px;                        /* 余白指定 */
+  font-size: 30px;
+}
+
+.top-guidance{
+  margin: auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+.square_btn{
+    display: inline-block;
+    font-size: 18px;
+    padding: 4px 20px;
+	  border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+    margin-bottom: 30px;
+    width: 200px
+}
+
+.square_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
+.header-image{
+  background: linear-gradient( 180deg, rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 1)),
+              url(/header.png);
+  // background-image: url("/top.jpg");
+  background-size:  100%;
+  background-repeat: no-repeat;
+  text-align: left;
+  height: 100px;
+}
+.page-title{
+  display:  inline-block;                         /* インラインブロックにする */
+  margin: 10px;                   /* 余白指定 */
+  font-size: 30px;
+}
+
+.question{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:auto 5px;
+}
+
+
+.answer {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 2px 2px;
+  font-size: 16px;
+  line-height: 30px;
+  transition: border-color ease .2s;
+  margin: auto 5px;
+
+  &:focus{
+    border-color: #369;
+    border-color: #5f98e1;
+  }
+}
+
+.question-row{
+  margin: 15px auto;
+}
+
+.registrate{
+  text-align: center;
+}
+
+
+.sample input{
+	display: none;
+}
+.sample label{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 110px;
+	margin: 0;
+	padding: 12px 5px;
+	border-right: 1px solid #abb2b7;
+	background: #bdc3c7;
+	color: #555e64;
+	font-size: 14px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.sample label:first-of-type{
+	border-radius: 3px 0 0 3px;
+}
+.sample label:last-of-type{
+	border-right: 0px;
+	border-radius: 0 3px 3px 0;
+}
+.sample input[type="radio"]:checked + label {
+	background-color: #a1b91d;
+	color: #fff;
+}

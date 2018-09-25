@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+　回答ID：<%= @answer.id %>
+</div>
+<div>
+  ユーザID：<%= @answer.user_id %>
+</div>
+<div>
+  ユーザ名：<%= @answer.user.email %>
+</div>
+<div>
+  店舗ID：<%= @answer.office_id %>
+</div>
+<div>
+  店舗名称：<%= @answer.office.name %>
+</div>
+<div>
+  <% @answer.answer_details.each do |ad| %>
+    <tr>
+      <td><%= ad.question_no %></td>
+      <td><%= ad.content%></td>
+    </tr>
+  <% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>
