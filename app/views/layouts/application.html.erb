@@ -6,9 +6,27 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-　　<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   </head>
   <body>
     <%= yield %>
+    <div class='control-footer'>
+      <% if current_user && current_user.login_type == 1 %>
+        <p>店舗管理者メニュー</p>
+        <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
+        <a href="/answers/" >[回答一覧を確認する]</a>
+      <% end %>
+      <% if current_user && current_user.login_type == 2 %>
+        システム管理者用メニュー</br>
+        <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
+        <a href="/answers/" >[回答一覧を確認する]</a>
+        <a href="/admin" >[システム管理者モード]</a>
+      <% end %>
+    </div>
+    <div>
+      <% if current_user && current_user.login_type == 0%>
+        <%= link_to '★',  destroy_user_session_path, method: :delete %></li>
+      <% end %>
+    </div>
   </body>
 </html>

@@ -31,18 +31,24 @@ class Ability
 
     user ||= User.new
     cannot :manage, :all #未ログイン
-    if user && user.login_type == 0
+    if user && user.login_type == 0         #ユーザ側の場合
+      #indexの表示、編集、読み込みは禁止する。結果、createのみ可能
       can :manage, Answer, office_id: user.office.id
-      #can :access, :rails_admin
-      #can :manage, :all
+      cannot :index, Answer
+      cannot :update, Answer
+      cannot :read, Answer
+      cannot :destroy, Answer
 
-    elsif user && user.login_type == 1
-      #店舗管理者モードの場合
+    elsif user && user.login_type == 1      #店舗管理者モードの場合
+      #自店舗のデータであればmanage可能
+      can :manage, Answer, office_id: user.office.id
 
-    elsif user && user.login_type == 2
-      #システム管理者モードの場合
-      can :access, :rails_admin
+
+    elsif user && user.login_type == 2      #システム管理者モードの場合
+      #すべてのデータであればmanage可能
       can :manage, :all
+      #システム管理者画面にアクセス可能
+      can :access, :rails_admin
     else
 
     end
