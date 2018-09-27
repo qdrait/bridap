@@ -1,11 +1,12 @@
 <p id = "notice"><%= notice %></p>
-<h1>Answers</h1>
+<h1>回答一覧</h1>
 <div class = "center">
   <table class = "table table-striped table-hover table-condensed">
     <thead>
       <tr>
         <td>回答番号</td>
         <td>式場名</td>
+        <td>お客様名</td>
         <td>回答日時</td>
         <td></td>
       </td>
@@ -15,6 +16,10 @@
         <tr>
           <td><%= answer.id %></td>
           <td><%= answer.office.name %></td>
+          <td>
+            <% unless answer.answer_details.find_by(question_no: 0).nil? || answer.answer_details.find_by(question_no: 3).nil? %>
+              <%= "#{answer.answer_details.find_by(question_no: 0).content}様　#{answer.answer_details.find_by(question_no: 3).content}様" %></td>
+            <% end %>
           <td><%= answer.created_at %></td>
           <!-- <td><%= link_to 'Show', answer %></td> -->
           <td><%= link_to '内容確認・編集', edit_answer_path(answer) %></td>
