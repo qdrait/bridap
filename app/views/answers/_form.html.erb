@@ -23,44 +23,43 @@
                   ['来館動機',2,['ゼクシィ','当社HP','知人紹介','その他',]],
                 ]
   %>
-
   <% if path == answers_path %>
-    <div class="container">
+    <div class = "container">
       <% questions.each_with_index do |question,index| %>
         <%= f.fields_for :answer_details do |od| %>
-        <div class="row question-row">
-          <div class="col-sm-3 question">
+        <div class = "row question-row">
+          <div class = "col-sm-3 question">
             <%= question[0] %>
           </div>
-          <div class="col-sm-8">
+          <div class = "col-sm-8">
             <%= render 'anser_detail_fields', f: od, i: index, style: question[1], choices: question[2] %>
           </div>
         </div>
         <% end %>
       <% end %>
     </div>
-    <div class="registrate">
+    <div class = "registrate">
       <%= f.submit '登録する', class: 'square_btn' %></br>
-      <a href="/" class="square_btn">回答をやめる</a>
+      <a href = "/" class = "square_btn">回答をやめる</a>
     </div>
 
   <% elsif path == answer_path%>
-    <div class="container">
+    <div class = "container">
         <%= f.fields_for :answer_details do |od| %>
-        <div class="row question-row">
-          <div class="col-sm-3 question">
+        <div class = "row question-row">
+          <div class = "col-sm-3 question">
             <%= questions[od.object.question_no][0] %>
           </div>
-          <div class="col-sm-8">
+          <div class = "col-sm-8">
             <%= render 'anser_detail_fields', f: od, i: od.object.question_no, style: questions[od.object.question_no][1], choices: questions[od.object.question_no][2] %>
           </div>
         </div>
         <% end %>
     </div>
-    <div class="registrate">
+    <div class = "registrate">
       <%= f.submit '編集する', class: 'square_btn' %></br>
-      <a href="/answers/index" class="square_btn">回答をやめる</a></br>
-      <a href="/answers/index" class="square_btn">削除する(作成中)</a>
+      <a href = "/answers/index" class = "square_btn">回答をやめる</a></br>
+      <a href = "/answers/index" class = "square_btn">削除する(作成中)</a>
     </div>
   <% end %>
 

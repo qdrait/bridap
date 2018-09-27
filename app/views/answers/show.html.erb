@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id = "notice"><%= notice %></p>
 
 <div>
 　回答ID：<%= @answer.id %>
@@ -19,11 +19,9 @@
   <% @answer.answer_details.each do |ad| %>
     <tr>
       <td><%= ad.question_no %></td>
-      <td><%= ad.content%></td>
+      <td><%= ad.content %></td>
     </tr>
   <% end %>
 </div>
-
-
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

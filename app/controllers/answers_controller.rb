@@ -26,7 +26,6 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Form::Answer.new(answer_params)
-
     respond_to do |format|
       if @answer.save
         format.html { redirect_to thanks_path, notice: 'Answer was successfully created.' }
@@ -73,17 +72,18 @@ class AnswersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_answer
-      @answer = Form::Answer.find(params[:id])
-    end
+  def set_answer
+    @answer = Form::Answer.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def answer_params
-      params
-        .require(:form_answer)
-        .permit(
-          Form::Answer::REGISTRABLE_ATTRIBUTES +
-          [answer_details_attributes: Form::AnswerDetail::REGISTRABLE_ATTRIBUTES]
-        )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def answer_params
+    params
+      .require(:form_answer)
+      .permit(
+        Form::Answer::REGISTRABLE_ATTRIBUTES +
+        [answer_details_attributes: Form::AnswerDetail::REGISTRABLE_ATTRIBUTES]
+      )
+  end
+
 end
