@@ -75,7 +75,7 @@ RailsAdmin.config do |config|
   config.model 'AnswerDetail' do
     LABEL_id = '回答詳細ID'
     LABEL_answer = '回答'
-    LABEL_question_no = '設問NO'
+    LABEL_question_id = '設問id'
     LABEL_content = '回答内容'
     LABEL_created_at = '作成日時'
     LABEL_updated_at = '更新日時'
@@ -87,8 +87,8 @@ RailsAdmin.config do |config|
       field :answer do
         label LABEL_answer
       end
-      field :question_no do
-        label LABEL_question_no
+      field :question_id do
+        label LABEL_question_id
       end
       field :content do
         label LABEL_content
@@ -103,7 +103,7 @@ RailsAdmin.config do |config|
   end
 
 
-  def custom_label_method
+  def custom_user_label_method
     self.email
   end
 
@@ -114,7 +114,7 @@ RailsAdmin.config do |config|
     LABEL_updated_at = '更新日時'
 
     object_label_method do
-      :custom_label_method
+      :custom_user_label_method
     end
 
     list do

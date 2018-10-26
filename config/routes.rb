@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   resources :answers
   #root page
   root 'answers#top', as: 'top'

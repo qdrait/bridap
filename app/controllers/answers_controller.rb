@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_questions, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
   # GET /answers
@@ -16,6 +17,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Form::Answer.new
+    @questions = Question.where(office_id: current_user.office.id)
   end
 
   # GET /answers/1/edit
@@ -74,6 +76,10 @@ class AnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
   def set_answer
     @answer = Form::Answer.find(params[:id])
+  end
+
+  def set_questions
+    @questions = Question.where(office_id: @answer.office_id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

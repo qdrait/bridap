@@ -1,0 +1,67 @@
+<%= form_for(@question, url: path, method: method) do |f| %>
+  <% if path == questions_path %>
+    <%= f.hidden_field :office_id, :value => current_user.office.id, class: 'form-control unit-price' %>
+  <% elsif path == question_path %>
+      <%= f.hidden_field :office_id, :value => @question.office.id, class: 'form-control unit-price' %>
+  <% end %>
+
+<div class = "container">
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "質問文" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.text_field :title, class: 'answer' %>
+    </div>
+  </div>
+
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "回答タイプ" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.number_field :input_type, class: 'answer' %>
+    </div>
+  </div>
+
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "選択肢" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.text_field :choices, class: 'answer' %>
+    </div>
+  </div>
+
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "表示順" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.number_field :order, class: 'answer' %>
+    </div>
+  </div>
+
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "必須項目" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.check_box :required, class: 'answer' %>
+    </div>
+  </div>
+
+  <div class = "row question-row">
+    <div class = "col-sm-3 question">
+      <%= f.label "表示対象" %>
+    </div>
+    <div class = "col-sm-8">
+      <%= f.check_box :display, class: 'answer', default: true %>
+    </div>
+  </div>
+
+  <div class = "registrate">
+    <%= f.submit '登録する', class: 'square_btn' %></br>
+  </div>
+</div>
+<% end %>

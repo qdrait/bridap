@@ -1,10 +1,10 @@
 <tr>
   <%= f.hidden_field :id %>
-  <%= f.hidden_field :question_no, :value => i %>
-  <% if style == 1 %>
-    <%= f.text_field :content, class: 'answer' %>
-  <% elsif style == 2 %>
-    <% choices.each do |choice| %>
+  <%= f.hidden_field :question_id, :value => q.id %>
+  <% if q.input_type == 1 #自由テキスト形式%>
+    <%= f.text_field :content, class: 'answer', required: q.required, placeholder: "#{'必須' if q.required}"%>
+  <% elsif q.input_type == 2 #ラジオボタン形式%>
+    <% q.choices.split(",").each do |choice| %>
     <div class = "sample">
       <%= f.radio_button :content, choice %>
       <%= f.label :content, choice, value: choice %>

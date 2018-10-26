@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  office: one
+  question_no: 1
+  title: MyString
+  input_type: 1
+  choices: MyString
+  order: 1
+  required: false
+  display: false
+
+two:
+  office: two
+  question_no: 1
+  title: MyString
+  input_type: 1
+  choices: MyString
+  order: 1
+  required: false
+  display: false

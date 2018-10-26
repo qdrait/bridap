@@ -42,6 +42,7 @@ class Ability
     elsif user && user.login_type == 1      #店舗管理者モードの場合
       #自店舗のデータであればmanage可能
       can :manage, Answer, office_id: user.office.id
+      can :manage, Question, office_id: user.office.id
 
 
     elsif user && user.login_type == 2      #システム管理者モードの場合
