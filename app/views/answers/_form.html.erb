@@ -24,7 +24,7 @@
 
   <% elsif path == answer_path%>
     <%= f.hidden_field :user_id, value: @answer.user_id, class: 'form-control unit-price' %>
-    <%= f.hidden_field :office_id, :value: @answer.office_id, class: 'form-control unit-price' %>
+    <%= f.hidden_field :office_id, value: @answer.office_id, class: 'form-control unit-price' %>
     <div class = "container">
         <%= f.fields_for :answer_details do |ad| %>
           <% question = @questions.find(ad.object.question_id)%>
