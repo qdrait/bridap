@@ -17,12 +17,12 @@
           <% when 1 %>
             <p>店舗管理者メニュー</p>
             <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
-            <a href = "/answers/" >[回答一覧を確認する]</a>
+            <%= link_to '[回答一覧を確認する]', answers_path %>
           <% when 2 %>
             システム管理者用メニュー</br>
             <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
-            <a href = "/answers/" >[回答一覧を確認する]</a>
-            <a href = "/admin" >[システム管理者モード]</a>
+            <%= link_to '[回答一覧を確認する]', answers_path %>
+            <%= link_to '[システム管理者モード]', rails_admin_path %>
           <% when 0%>
             <%= link_to '★', destroy_user_session_path, method: :delete %></li>
         <% end %>

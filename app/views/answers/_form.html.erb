@@ -19,7 +19,7 @@
     </div>
     <div class = "registrate">
       <%= f.submit '登録する', class: 'square_btn' %></br>
-      <a href = "/" class = "square_btn">回答をやめる</a>
+      <%= link_to '回答をやめる', top_path, class: "square_btn" %>
     </div>
 
   <% elsif path == answer_path%>
@@ -40,8 +40,7 @@
     </div>
     <div class = "registrate">
       <%= f.submit '編集する', class: 'square_btn' %></br>
-      <a href = "/answers/index" class = "square_btn">回答をやめる</a></br>
-      <a href = "/answers/index" class = "square_btn">削除する(作成中)</a>
+      <%= link_to '回答をやめる', top_path, class: "square_btn" %>
     </div>
   <% end %>
 
