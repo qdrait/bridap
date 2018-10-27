@@ -18,6 +18,7 @@
             <p>店舗管理者メニュー</p>
             <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
             <%= link_to '[回答一覧を確認する]', answers_path %>
+            <%= link_to '[設問を編集する]', questions_path %>
           <% when 2 %>
             システム管理者用メニュー</br>
             <%= link_to '[システム終了]', destroy_user_session_path, method: :delete %></li>
