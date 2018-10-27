@@ -1,6 +1,6 @@
 <tr>
   <%= f.hidden_field :id %>
-  <%= f.hidden_field :question_id, :value => q.id %>
+  <%= f.hidden_field :question_id, value: q.id %>
   <% if q.input_type == 1 #自由テキスト形式%>
     <%= f.text_field :content, class: 'answer', required: q.required, placeholder: "#{'必須' if q.required}"%>
   <% elsif q.input_type == 2 #ラジオボタン形式%>

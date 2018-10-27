@@ -1,8 +1,8 @@
 <%= form_for(@question, url: path, method: method) do |f| %>
   <% if path == questions_path %>
-    <%= f.hidden_field :office_id, :value => current_user.office.id, class: 'form-control unit-price' %>
+    <%= f.hidden_field :office_id, value: current_user.office.id, class: 'form-control unit-price' %>
   <% elsif path == question_path %>
-      <%= f.hidden_field :office_id, :value => @question.office.id, class: 'form-control unit-price' %>
+      <%= f.hidden_field :office_id, value: @question.office.id, class: 'form-control unit-price' %>
   <% end %>
 
 <div class = "container">
